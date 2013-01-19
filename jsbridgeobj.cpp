@@ -6,21 +6,27 @@ JSBridgeObj::JSBridgeObj(QObject *parent) :
 {
 }
 
-QString JSBridgeObj::returnStr(){
-    return QString("Hello");
+void JSBridgeObj::setFrame(QWebFrame *fr){
+    frame = fr;
 }
 
-int JSBridgeObj::returnInt(){
-    return 1;
-}
-
-void JSBridgeObj::passInt(int i){
-    qDebug() << i;
-}
+/*Calls from JavaScript*/
 
 int JSBridgeObj::launchJar(QString str){
-    qDebug() << str;
+
     QString cmd = QString("java -jar ").append(str);
     return QProcess::execute(cmd);
    // QProcess::execute( "java", QStringList() << "-jar" << "c:\\myfile.jar" );
+}
+
+void JSBridgeObj::initiateDownload(QString fileUrl){
+    DownloadManager *manager = new DownloadManager();
+    manager->downloadFile(fileUrl);
+    connect(manager,SIGNAL(downloadCallback(QString)),SLOT(JSCallback(QString)));
+}
+
+/*Callback*/
+
+void JSBridgeObj::JSCallback(QString callback){
+    frame->evaluateJavaScript(callback);
 }

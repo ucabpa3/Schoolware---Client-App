@@ -32,7 +32,6 @@
 */
 
 
-
 class QWebFrame;
 
 class WebTouchPhysicsInterface : public QObject

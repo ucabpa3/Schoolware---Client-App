@@ -1,10 +1,10 @@
 #include <QApplication>
 #include <QWebSettings>
-#include <QWebFrame>
 #include <QWebView>
 #include <QGraphicsWebView>
 #include <QWebPage>
 #include <jsbridgeobj.h>
+#include <QDebug>
 #include "html5applicationviewer.h"
 
 void SetupGlobalWebSettings(){
@@ -63,8 +63,8 @@ int main(int argc, char *argv[])
     QWebFrame *frame = page->mainFrame();
 
     JSBridgeObj *s = new JSBridgeObj();
-
-    frame->addToJavaScriptWindowObject(QString("test"), s);
+    s->setFrame(frame);
+    frame->addToJavaScriptWindowObject(QString("linker"), s);
 
     return app.exec();
 }

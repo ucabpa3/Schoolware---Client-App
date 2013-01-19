@@ -5,6 +5,7 @@ DEPLOYMENTFOLDERS = folder_01
 
 # Define TOUCH_OPTIMIZED_NAVIGATION for touch optimization and flicking
 DEFINES += TOUCH_OPTIMIZED_NAVIGATION
+QT += network
 
 # If your application uses the Qt Mobility libraries, uncomment the following
 # lines and add the respective components to the MOBILITY variable.
@@ -13,12 +14,14 @@ DEFINES += TOUCH_OPTIMIZED_NAVIGATION
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    jsbridgeobj.cpp
+    jsbridgeobj.cpp \
+    downloadmanager.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(html5applicationviewer/html5applicationviewer.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    jsbridgeobj.h
+    jsbridgeobj.h \
+    downloadmanager.h
 
