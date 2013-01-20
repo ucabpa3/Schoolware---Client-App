@@ -1,3 +1,3 @@
 function finishedDownload(msg){
-    alert(msg);
+    $("#loading-wrapper").animate({bottom: "-=70" },200);
 }
