@@ -25,3 +25,7 @@ HEADERS += \
     jsbridgeobj.h \
     downloadmanager.h
 
+OTHER_FILES += \
+    SchoolWareWebSite/js/qt_callbacks.js \
+    SchoolWareWebSite/js/actions.js
+

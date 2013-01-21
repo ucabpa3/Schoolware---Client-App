@@ -25,6 +25,18 @@ void JSBridgeObj::initiateDownload(QString fileUrl){
     connect(manager,SIGNAL(downloadCallback(QString)),SLOT(JSCallback(QString)));
 }
 
+QString JSBridgeObj::fetchAppHtml(){
+
+    QFile file (QDir::currentPath() + "/" "AppFolder" + "/" + "appList.html");
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            QTextStream stream(&file);
+            return stream.readAll();
+        }
+        return "<h1 id=\"start-br\">Start browsing applications.</h1>";
+}
+
+
 /*Callback*/
 
 void JSBridgeObj::JSCallback(QString callback){

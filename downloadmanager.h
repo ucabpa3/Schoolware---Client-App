@@ -26,6 +26,8 @@ private:
 
 private slots:
     void downloadFinished(QNetworkReply *reply);
+    void buildAppHtml(QString fileName, QString PathToApp);
+    void buildCatHtml(QString fileName, QString PathToApp);
 
 };
 

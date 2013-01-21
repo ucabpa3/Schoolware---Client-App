@@ -28,13 +28,13 @@
         	<nav>
 				<ul>
         			<li id="ins" class="selected" >
-        				<a href="#installed-apps">Installed Apps</a>
+                                        <a href="#installed-apps">Installed Apps</a>
         			</li>
         			<li id="br" class="non-selected" >
-        				<a href="#browse-apps">Browse Apps</a>
+                                        <a href="#browse-apps">Browse Apps</a>
         			</li>
         			<li id="faq" class="non-selected" >
-        				<a href="#_faq_">FAQ</a>
+                                        <a href="#_faq_">FAQ</a>
         			</li>
         		</ul>
         		</nav>
@@ -47,19 +47,20 @@
                         </div>
 
         	</div>
-        	<div id="content"> 
+                <div id="content">
         		<div id="categories"> 
         		<div id="cat-header">
         					<h3>categories</h3>
         				</div>
         				<ul>
-        					<li class="selected"><a>All</a></li>
-        					<li><a>Mathematics</a></li>
-        					<li><a>Biology</a></li>
+                                                <li class="selected" id="all"><a>All</a></li>
+                                                <li id="mathematics"><a>Mathematics</a></li>
+                                                <li id="biology"><a>Biology</a></li>
         				</ul>
         			</div>
 
                         <div id="main-content">
+                     <!--   <div id="loader"><img src="img/loading.gif"/></div>-->
                        <!-- <div class="search-util">
                                 <div class="search-bar">
                                 <form role="search" method="post">
@@ -72,8 +73,6 @@
                                 </div>
                         </div>-->
                               <div id="gen-content">
-        			<a href="/Users/costas/Documents/UMLet/umlet.jar">UMLet</a>
-                                <a href="http://www.scs.stanford.edu/nyu/03sp/notes/l20d.txt">OtherApp</a>
                               </div>
         		</div>
         	</div>
@@ -81,8 +80,8 @@
         
         <script src="js/vendor/jquery-1.8.3.min.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/effects.js"></script>
+        <script src="js/actions.js"></script>
         <script src="js/native-calls.js"></script>
-        <script src="js/callbacks.js"></script>
+        <script src="js/qt_callbacks.js"></script>
     </body>
 </html>

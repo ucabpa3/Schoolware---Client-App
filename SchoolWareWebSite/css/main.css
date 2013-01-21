@@ -26,9 +26,9 @@ html{
 body {
 	height:100%;
 	width:100%;
-        background: url(../img/bg.png);
+        background: #DDD url(../img/bg2.jpg);
 	background-color: #FBF0E1;
-	font-family: 'Futura', 'Arial', 'sans-serif';
+        font-family: 'Lato', 'Calibri', 'sans-serif';
     font-size: 1em;
     line-height: 1.4;
     overflow:hidden;
@@ -88,6 +88,10 @@ fieldset {
 
 textarea {
     resize: vertical;
+}
+a{
+    text-decoration:none;
+    cursor:pointer;
 }
 
 /* ==========================================================================
@@ -173,7 +177,7 @@ textarea {
 
 #sidebar li.selected{
         background: #23272c;
-        box-shadow: 0px 2px 1px black inset, 0px -2px 1px black inset;
+        box-shadow: 0px 2px 1px #26262E inset, 0px -2px 1px #26262E inset;
 }
 
 #sidebar li.selected a{
@@ -292,26 +296,63 @@ textarea {
 	padding-top:5px;
 	padding-left:5px;
 	cursor: pointer;
-	font-size:14px;
-}
-#categories ul li a:hover{
-	color:#1C5AC4;
+        font-size:14px;
 }
 
 #categories li.selected{
 	background:#CCCCCC;
+        color:#1C5AC4;
 }
 
 #main-content{
-	height:100%;
+        height:90%;
+        min-height:500px;
+        min-width:500px;
 	margin-left:410px;
-        padding: 0px 100px 100px 100px;
+        padding: 40px 55px 20px 5px;
 	background:transparent;
+}
+
+#loader{
+    position:relative;
+    background: rgba(0,0,0,0.7);
+    height:100%;
+    width:100%;
+}
+
+#loader img{
+    margin:0 auto;
+    opacity: 0.3;
 }
 
 #gen-content{
     width:100%;
     height:100%;
+}
+
+#gen-content a{
+    color:black;
+}
+
+#start-br{
+    display: block;
+    padding: 50px;
+    color: rgba(136,136,136,0.7);
+    font: bold 4em 'Lato', sans-serif;
+    position: relative;
+    text-shadow: 1px 1px white, -1px -1px #444;
+}
+
+
+.installed-app{
+    padding: 0 40px 10px 30px;
+    float:left;
+    text-align:center;
+    width:150px;
+}
+
+.installed-app img{
+    margin-bottom:5px;
 }
 /*CONTENT END*/
 
@@ -455,7 +496,7 @@ textarea {
 
     a,
     a:visited {
-        text-decoration: underline;
+        text-decoration: none;
     }
 
     a[href]:after {
