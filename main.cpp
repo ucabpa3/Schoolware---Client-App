@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
     SetupGlobalWebSettings();
     viewer.setOrientation(Html5ApplicationViewer::ScreenOrientationAuto);
     viewer.showMaximized();
+    viewer.setMinimumWidth(1120);
     viewer.loadFile(QLatin1String("SchoolWareWebSite/index.html"));
 
     QWebPage *page = viewer.webView()->page();

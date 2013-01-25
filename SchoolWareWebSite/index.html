@@ -10,31 +10,26 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
 
-        <!-- Add your site or application content here -->
         <div id="container">
         	<div id="sidebar">
         		<div id="side-header"> </div>
         	<nav>
 				<ul>
         			<li id="ins" class="selected" >
-                                        <a href="#installed-apps">Installed Apps</a>
+                                        <a href="#installed-apps" onfocus="blur();">Installed Apps</a>
         			</li>
         			<li id="br" class="non-selected" >
-                                        <a href="#browse-apps">Browse Apps</a>
+                                        <a href="#browse-apps" onfocus="blur();">Browse Apps</a>
         			</li>
         			<li id="faq" class="non-selected" >
-                                        <a href="#_faq_">FAQ</a>
+                                        <a href="#_faq_" onfocus="blur();">FAQ</a>
         			</li>
         		</ul>
         		</nav>
@@ -48,16 +43,25 @@
 
         	</div>
                 <div id="content">
-        		<div id="categories"> 
-        		<div id="cat-header">
+                        <div class="categories" id="inst-cat">
+                        <div class="cat-header">
         					<h3>categories</h3>
         				</div>
         				<ul>
-                                                <li class="selected" id="all"><a>All</a></li>
-                                                <li id="mathematics"><a>Mathematics</a></li>
-                                                <li id="biology"><a>Biology</a></li>
+                                                <li class="selected" id="all"><a onfocus="blur();">All</a></li>
         				</ul>
         			</div>
+                                <div class="categories" id="br-cat">
+                                <div class="cat-header">
+                                                        <h3>categories</h3>
+                                                </div>
+                                                <ul>
+                                                        <li class="selected" id="all"><a onfocus="blur();">All</a></li>
+                                                        <li id="mathematics"><a onfocus="blur();">Mathematics</a></li>
+                                                        <li id="biology"><a onfocus="blur();">Biology</a></li>
+                                                </ul>
+                                        </div>
+
 
                         <div id="main-content">
                      <!--   <div id="loader"><img src="img/loading.gif"/></div>-->
@@ -73,7 +77,9 @@
                                 </div>
                         </div>-->
                               <div id="gen-content">
+                              <div id="app-pane"></div>
                               </div>
+                              <div id="cover"></div>
         		</div>
         	</div>
         </div>

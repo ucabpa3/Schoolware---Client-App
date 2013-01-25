@@ -1,7 +1,5 @@
 $("#gen-content a").click(function(){
 
-    //var url = 'http://www.gizmodo.co.uk/';
-
       //$.get(url, function (data) {
         //  $("#gen-content").append(data);
       //});
