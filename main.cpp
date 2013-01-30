@@ -6,6 +6,7 @@
 #include <jsbridgeobj.h>
 #include <QDebug>
 #include "html5applicationviewer.h"
+#include <QProcess>
 
 void SetupGlobalWebSettings(){
     QWebSettings* settings = QWebSettings::globalSettings();
@@ -49,6 +50,9 @@ void SetupGlobalWebSettings(){
         //settings->setLocalStoragePath(QString("/Users/costas/Documents"));
 }
 
+
+
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -66,6 +70,6 @@ int main(int argc, char *argv[])
     JSBridgeObj *s = new JSBridgeObj();
     s->setFrame(frame);
     frame->addToJavaScriptWindowObject(QString("linker"), s);
-
+    //bootChecks();
     return app.exec();
 }

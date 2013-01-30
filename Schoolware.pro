@@ -27,5 +27,5 @@ HEADERS += \
 
 OTHER_FILES += \
     SchoolWareWebSite/js/qt_callbacks.js \
-    SchoolWareWebSite/js/actions.js
+    SchoolWareWebSite/js/load.js
 

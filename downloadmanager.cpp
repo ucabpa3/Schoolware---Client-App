@@ -8,8 +8,9 @@ DownloadManager::DownloadManager(QObject *parent):
     connect(_manager, SIGNAL(finished(QNetworkReply*)), SLOT(downloadFinished(QNetworkReply*)));
 }
 
-void DownloadManager::downloadFile(QString file_url, QString Cat){
+void DownloadManager::downloadFile(QString file_url, QString Cat, QString Desc){
     Category = Cat;
+    AppDesc = Desc;
     QUrl url(file_url);
     _manager->get(QNetworkRequest(url));
 }
@@ -36,20 +37,20 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
         if(!QDir(MainAppDir).exists()){
             QDir().mkdir(MainAppDir);
         }
+
+        buildCatHtml();
         QDir::setCurrent(QDir::currentPath() + "/" + MainAppDir); //Appfolder
         if(!QDir(Category).exists()){
             QDir().mkdir(Category);
-            QDir::setCurrent(initWorkingPath);
-            buildCatHtml();
-            QDir::setCurrent(QDir::currentPath() + "/" + MainAppDir);
         }
+
         QDir::setCurrent(QDir::currentPath() + "/" + Category);//appfolder category
-        qDebug() << list[1];
+       // qDebug() << list[1];
         QString DirName = fileName + "App";
 
         if(!QDir(DirName).exists()){
             QDir().mkdir(DirName);
-        }
+
 
         QString completePathToApp = QDir::currentPath() + "/" + DirName +"/"+ fileName;
         QFile file(completePathToApp);
@@ -63,17 +64,20 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
                     QString cmd = QString("unzip ").append(fileName);
                     QProcess::execute(cmd);
                 }
-                downloadCallback("finishedDownload(' ');");
+                downloadCallback("finishedDownload();");
                 QDir::setCurrent(initWorkingPath);
                 buildAppHtml(fileName, completePathToApp);
                 jsonBuilder(fileName,Category);
 
             }
             else{
+                QDir::setCurrent(initWorkingPath);
                 downloadCallback("finishedDownload('Application already exists.');");
             }
         }
+        }
         else{
+            QDir::setCurrent(initWorkingPath);
             downloadCallback("finishedDownload('Application already exists.');");
         }
     }
@@ -87,7 +91,7 @@ void DownloadManager::buildAppHtml(QString fileName, QString PathToApp){
         if (appHtml.open(QIODevice::WriteOnly)){
 
             QTextStream stream (&appHtml);
-            stream << "<div class=\"installed-app "+Category+" \">";
+            stream << "<div class=\"installed-app\" category=\""+Category+"\" description=\""+AppDesc+"\">";
             stream << "<a href=\""+PathToApp+"\"><img src=\"img/application_icon.png\"/>"+fileName+"</a>";
             stream << "</div>" << endl;
             appHtml.close();
@@ -98,8 +102,8 @@ void DownloadManager::buildAppHtml(QString fileName, QString PathToApp){
         if(appHtml.open(QIODevice::Append)){
 
             QTextStream stream (&appHtml);
-            stream << "<div class=\"installed-app "+Category+"\">"<<endl;
-            stream << "<a href=\""+PathToApp+"\"><img src=\"img/application_icon.png\"/>"+fileName+"</a>";
+            stream << "<div class=\"installed-app\" category=\""+Category+"\" description=\""+AppDesc+"\">"<<endl;
+            stream << "<a href=\""+PathToApp+"\" onfocus=\"blur();\"><img src=\"img/application_icon.png\"/>"+fileName+"</a>";
             stream << "</div>" << endl;
             appHtml.close();
         }
@@ -113,16 +117,24 @@ void DownloadManager::buildCatHtml(){
     if(!CatHtml.exists()){
         if (CatHtml.open(QIODevice::WriteOnly)){
             QTextStream stream (&CatHtml);
-            stream << "<li class=\"selected\" id=\"all\"><a onfocus=\"blur();\">All</a></li>";
+
+            //stream << "<li class=\"selected\" id=\"all\"><a onfocus=\"blur();\">All</a></li>";
             stream << "<li id=\""+Category+"\"><a onfocus=\"blur();\">"+Category+"</a></li>";
+
             CatHtml.close();
         }
     }
     else{
-        if(CatHtml.open(QIODevice::Append)){
-
-            QTextStream stream (&CatHtml);
-            stream << "<li id=\""+Category+"\"><a onfocus=\"blur();\">"+Category+"</a></li>"<<endl;
+        if(CatHtml.open(QIODevice::ReadOnly)){
+            QTextStream Rstream(&CatHtml);
+            QString read = Rstream.readAll();
+            if(!read.contains(Category)){
+                CatHtml.close();
+                if(CatHtml.open(QIODevice::Append)){
+                    QTextStream stream (&CatHtml);
+                    stream << "<li id=\""+Category+"\"><a onfocus=\"blur();\">"+Category+"</a></li>"<<endl;
+                }
+            }
             CatHtml.close();
         }
 
@@ -143,6 +155,7 @@ void DownloadManager::jsonBuilder(QString appname, QString category){
     else{
 
             QString line ;
+
             if(file.open(QIODevice::ReadOnly)){
                 QTextStream stream(&file);
 
@@ -156,7 +169,7 @@ void DownloadManager::jsonBuilder(QString appname, QString category){
                     }
                     else {
 
-                        line.append(",{\"Appname\" : \""+appname+"\",\"Category\":\""+category+"\"}");
+                        line.append("\n,{\"Appname\" : \""+appname+"\",\"Category\":\""+category+"\"}");
                         break;
                     }
                 }

@@ -14,16 +14,22 @@ public:
 signals:
 
 public slots:
-    int launchJar(QString str);
-    void initiateDownload(QString fileUrl, QString Cat);
+    int launchApp(QString str);
+    void initiateDownload(QString fileUrl, QString Cat, QString Desc);
     void setFrame(QWebFrame *fr);
     void JSCallback(QString callback);
-    QVariant appExists(QString AppName);
+    QVariant appExists(QString AppName, QString Category);
     QString fetchFile(QString filename);
+    void json();
+    QVariant uninstallApp(QString AppName, QString Category);
+    void updateFile(QString fileName, QString data);
+    QString bootChecks();
 
 private:
     QWebFrame *frame;
-
+    QString escapeJavascriptString(QString str);
+    bool removeDir(QString dirName);
+    bool dependancyCheck(QString dep);
 };
 
 #endif // JSBRIDGEOBJ_H
