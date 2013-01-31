@@ -43,8 +43,8 @@ bindEvents();
                 //linker.initiateDownload("http://schoolware.cs.ucl.ac.uk:9999/aad-ws/Apps/Default/Coureswork.jar","Math","asdasds");
                // linker.launchJar("/Users/costas/Documents/Coureswork.jar");
             }
-            //linker.launchApp("final.jar");
-            setTimeout('retrieveCategories();',3000);
+           // linker.launchApp("Biology_1.jar");
+            setTimeout('retrieveCategories();',2000);
         });
 
 

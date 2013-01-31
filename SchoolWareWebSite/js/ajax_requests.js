@@ -21,7 +21,8 @@ function retrieveCategories(){
         )
         .error(function(jq, textstatus, errorThrown) {
             $("#loading-wrapper").animate({bottom: "-=70"},200);
-                alert("Error: "+errorThrown);
+                //alert("Error: "+errorThrown);
+            $().toastmessage('showErrorToast', "Error: "+errorThrown);
         });
 
     });
@@ -50,7 +51,7 @@ function retrieveAppsByCat(category){
              })
             .error(function(jq, textstatus, errorThrown) {
                 $("#loading-wrapper").animate({bottom: "-=70"},200);
-                alert("Error: "+errorThrown);
+                $().toastmessage('showErrorToast', "Error: "+errorThrown);
             });
 
      });
@@ -72,14 +73,24 @@ function sendTestResults(str){
                     url: "http://schoolwaretest.co.nf/test3.php",
                        data : {json:json}
                 }).done(function(msg ) {
-                    alert(msg);
+                    $().toastmessage('showErrorToast', msg);
                     $("#loading-wrapper").animate({bottom: "-=70"},200);
                   });
 
         });
     }
     catch(e){
-        alert("Error: Application produced faulty resutls.");
+        $().toastmessage('showErrorToast', "Error: Application produced faulty resutls.");
     }
 
 }
+/* Meant to implement the observer pattern
+  function poll(){
+$.ajax({ '': "server", success: function(data){
+            alert('Polling!');
+            //update code goes here
+
+
+    }, dataType: "json", complete: poll, timeout: 30000 });
+    }
+    */

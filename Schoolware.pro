@@ -11,7 +11,8 @@ QT += network
 # lines and add the respective components to the MOBILITY variable.
 # CONFIG += mobility
 # MOBILITY +=
-
+#CONFIG+=static
+QT       += webkit
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     jsbridgeobj.cpp \

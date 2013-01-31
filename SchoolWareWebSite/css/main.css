@@ -350,11 +350,11 @@ margin-top:30px;
 .categories ul li{
 	color:black;
 	list-style: none;
-	height:30px;
+        height:35px;
         width:80%;
         margin:0 auto;
 	padding:5px;
-	border-bottom: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;

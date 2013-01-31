@@ -18,32 +18,39 @@ void JSBridgeObj::setFrame(QWebFrame *fr){
 int JSBridgeObj::launchApp(QString str){
 
     QString JSONdir = "Results";
+    int exit = 1;
     QString jsonName = QDate::currentDate().toString("dd.MM.yyyy").append(".json");
 
     if(!QDir(JSONdir).exists()){
         QDir().mkdir(JSONdir);
     }
 
-    QString appPath = QDir::currentPath() + "/" + JSONdir + "/" + jsonName;
-
-    qDebug() << appPath;
-
-    if (str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4)
+    QString filePath = QDir::currentPath() + "/" + JSONdir + "/" + jsonName;
+    if (str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4 )
     {
-        qDebug() << "java" << QStringList() << "-jar" << str << appPath;
-        return QProcess::execute( "java", QStringList() << "-jar" << str << appPath);
+        exit =  QProcess::execute( "java", QStringList() << "-jar" << str << filePath);
     }
+   // else if(str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4){
+   //     exit =  QProcess::execute( "java", QStringList() << "-jar" << str );
+    //}
     else if (str.contains(".exe") && str.lastIndexOf(".exe") == str.size() - 4)
     {
        #if defined(Q_OS_MAC)
-        return QProcess::execute("mono",  QStringList() << str);
+        exit =  QProcess::execute("mono",  QStringList() << str);
 
 
        #elif defined(Q_OS_WIN32)
-        return QProcess::execute(str, QStringList());
+        exit =  QProcess::execute(str, QStringList());
         #endif
     }
-    return 1;
+    if(exit == 0){
+        QString js = fetchFile(filePath);
+        QString esc_js = escapeJavascriptString(js);
+        frame->evaluateJavaScript(QString("sendTestResults('%1')").arg(esc_js));
+        QFile::remove(filePath);
+    }
+
+    return exit;
 }
 
 void JSBridgeObj::initiateDownload(QString fileUrl, QString Cat, QString Desc){
@@ -184,7 +191,7 @@ void JSBridgeObj::JSCallback(QString callback){
 
 
 void JSBridgeObj::json(){
-    QString js = fetchFile("update.json");
+    QString js = fetchFile("30.01.2013.json");
     QString esc_js = escapeJavascriptString(js);
     frame->evaluateJavaScript(QString("sendTestResults('%1')").arg(esc_js));
 }

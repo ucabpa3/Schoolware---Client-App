@@ -3,7 +3,7 @@
 #include <QWebView>
 #include <QGraphicsWebView>
 #include <QWebPage>
-#include <jsbridgeobj.h>
+#include "jsbridgeobj.h"
 #include <QDebug>
 #include "html5applicationviewer.h"
 #include <QProcess>
