@@ -1,0 +1,609 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'html5applicationviewer.cpp'
+**
+** Created: Thu Jan 31 12:21:17 2013
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'html5applicationviewer.cpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.4. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_WebTouchPhysicsInterface[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      48,   26,   25,   25, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      86,   80,   25,   25, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_WebTouchPhysicsInterface[] = {
+    "WebTouchPhysicsInterface\0\0"
+    "point,startPressPoint\0"
+    "positionChanged(QPointF,QPoint)\0range\0"
+    "setRange(QRectF)\0"
+};
+
+void WebTouchPhysicsInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        WebTouchPhysicsInterface *_t = static_cast<WebTouchPhysicsInterface *>(_o);
+        switch (_id) {
+        case 0: _t->positionChanged((*reinterpret_cast< const QPointF(*)>(_a[1])),(*reinterpret_cast< const QPoint(*)>(_a[2]))); break;
+        case 1: _t->setRange((*reinterpret_cast< const QRectF(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData WebTouchPhysicsInterface::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject WebTouchPhysicsInterface::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_WebTouchPhysicsInterface,
+      qt_meta_data_WebTouchPhysicsInterface, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &WebTouchPhysicsInterface::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *WebTouchPhysicsInterface::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *WebTouchPhysicsInterface::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_WebTouchPhysicsInterface))
+        return static_cast<void*>(const_cast< WebTouchPhysicsInterface*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int WebTouchPhysicsInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void WebTouchPhysicsInterface::positionChanged(const QPointF & _t1, const QPoint & _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_WebTouchPhysics[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       5,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      23,   17,   16,   16, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      40,   16,   16,   16, 0x0a,
+      71,   65,   16,   16, 0x0a,
+     115,  100,   95,   16, 0x0a,
+     136,  100,   95,   16, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_WebTouchPhysics[] = {
+    "WebTouchPhysics\0\0range\0setRange(QRectF)\0"
+    "decelerationTimerFired()\0point\0"
+    "changePosition(QPointF)\0bool\0"
+    "point,distance\0isFlick(QPointF,int)\0"
+    "isPan(QPointF,int)\0"
+};
+
+void WebTouchPhysics::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        WebTouchPhysics *_t = static_cast<WebTouchPhysics *>(_o);
+        switch (_id) {
+        case 0: _t->setRange((*reinterpret_cast< const QRectF(*)>(_a[1]))); break;
+        case 1: _t->decelerationTimerFired(); break;
+        case 2: _t->changePosition((*reinterpret_cast< const QPointF(*)>(_a[1]))); break;
+        case 3: { bool _r = _t->isFlick((*reinterpret_cast< const QPointF(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 4: { bool _r = _t->isPan((*reinterpret_cast< const QPointF(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData WebTouchPhysics::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject WebTouchPhysics::staticMetaObject = {
+    { &WebTouchPhysicsInterface::staticMetaObject, qt_meta_stringdata_WebTouchPhysics,
+      qt_meta_data_WebTouchPhysics, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &WebTouchPhysics::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *WebTouchPhysics::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *WebTouchPhysics::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_WebTouchPhysics))
+        return static_cast<void*>(const_cast< WebTouchPhysics*>(this));
+    return WebTouchPhysicsInterface::qt_metacast(_clname);
+}
+
+int WebTouchPhysics::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = WebTouchPhysicsInterface::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void WebTouchPhysics::setRange(const QRectF & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_WebTouchScroller[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       3,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      24,   18,   17,   17, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      51,   45,   17,   17, 0x0a,
+      95,   72,   17,   17, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_WebTouchScroller[] = {
+    "WebTouchScroller\0\0range\0rangeChanged(QRectF)\0"
+    "frame\0setFrame(QWebFrame*)\0"
+    "delta,scrollStartPoint\0scroll(QPointF,QPoint)\0"
+};
+
+void WebTouchScroller::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        WebTouchScroller *_t = static_cast<WebTouchScroller *>(_o);
+        switch (_id) {
+        case 0: _t->rangeChanged((*reinterpret_cast< const QRectF(*)>(_a[1]))); break;
+        case 1: _t->setFrame((*reinterpret_cast< QWebFrame*(*)>(_a[1]))); break;
+        case 2: _t->scroll((*reinterpret_cast< const QPointF(*)>(_a[1])),(*reinterpret_cast< const QPoint(*)>(_a[2]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData WebTouchScroller::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject WebTouchScroller::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_WebTouchScroller,
+      qt_meta_data_WebTouchScroller, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &WebTouchScroller::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *WebTouchScroller::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *WebTouchScroller::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_WebTouchScroller))
+        return static_cast<void*>(const_cast< WebTouchScroller*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int WebTouchScroller::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void WebTouchScroller::rangeChanged(const QRectF & _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+static const uint qt_meta_data_WebTouchNavigation[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       4,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      20,   19,   19,   19, 0x0a,
+      38,   19,   19,   19, 0x0a,
+      55,   19,   19,   19, 0x0a,
+      77,   19,   19,   19, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_WebTouchNavigation[] = {
+    "WebTouchNavigation\0\0hoverTimerFired()\0"
+    "downTimerFired()\0quickDownTimerFired()\0"
+    "quickUpTimerFired()\0"
+};
+
+void WebTouchNavigation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        WebTouchNavigation *_t = static_cast<WebTouchNavigation *>(_o);
+        switch (_id) {
+        case 0: _t->hoverTimerFired(); break;
+        case 1: _t->downTimerFired(); break;
+        case 2: _t->quickDownTimerFired(); break;
+        case 3: _t->quickUpTimerFired(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData WebTouchNavigation::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject WebTouchNavigation::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_WebTouchNavigation,
+      qt_meta_data_WebTouchNavigation, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &WebTouchNavigation::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *WebTouchNavigation::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *WebTouchNavigation::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_WebTouchNavigation))
+        return static_cast<void*>(const_cast< WebTouchNavigation*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int WebTouchNavigation::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
+    return _id;
+}
+static const uint qt_meta_data_WebNavigation[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       0,    0, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_WebNavigation[] = {
+    "WebNavigation\0"
+};
+
+void WebNavigation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    Q_UNUSED(_o);
+    Q_UNUSED(_id);
+    Q_UNUSED(_c);
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData WebNavigation::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject WebNavigation::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_WebNavigation,
+      qt_meta_data_WebNavigation, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &WebNavigation::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *WebNavigation::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *WebNavigation::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_WebNavigation))
+        return static_cast<void*>(const_cast< WebNavigation*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int WebNavigation::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    return _id;
+}
+static const uint qt_meta_data_NavigationController[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      22,   21,   21,   21, 0x05,
+      40,   21,   21,   21, 0x05,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_NavigationController[] = {
+    "NavigationController\0\0pauseNavigation()\0"
+    "resumeNavigation()\0"
+};
+
+void NavigationController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        NavigationController *_t = static_cast<NavigationController *>(_o);
+        switch (_id) {
+        case 0: _t->pauseNavigation(); break;
+        case 1: _t->resumeNavigation(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData NavigationController::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject NavigationController::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_NavigationController,
+      qt_meta_data_NavigationController, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &NavigationController::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *NavigationController::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *NavigationController::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_NavigationController))
+        return static_cast<void*>(const_cast< NavigationController*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int NavigationController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void NavigationController::pauseNavigation()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void NavigationController::resumeNavigation()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
+}
+static const uint qt_meta_data_Html5ApplicationViewerPrivate[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       3,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      31,   30,   30,   30, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      47,   30,   30,   30, 0x0a,
+      54,   30,   30,   30, 0x08,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_Html5ApplicationViewerPrivate[] = {
+    "Html5ApplicationViewerPrivate\0\0"
+    "quitRequested()\0quit()\0addToJavaScript()\0"
+};
+
+void Html5ApplicationViewerPrivate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        Html5ApplicationViewerPrivate *_t = static_cast<Html5ApplicationViewerPrivate *>(_o);
+        switch (_id) {
+        case 0: _t->quitRequested(); break;
+        case 1: _t->quit(); break;
+        case 2: _t->addToJavaScript(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData Html5ApplicationViewerPrivate::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject Html5ApplicationViewerPrivate::staticMetaObject = {
+    { &QGraphicsView::staticMetaObject, qt_meta_stringdata_Html5ApplicationViewerPrivate,
+      qt_meta_data_Html5ApplicationViewerPrivate, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &Html5ApplicationViewerPrivate::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *Html5ApplicationViewerPrivate::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *Html5ApplicationViewerPrivate::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_Html5ApplicationViewerPrivate))
+        return static_cast<void*>(const_cast< Html5ApplicationViewerPrivate*>(this));
+    return QGraphicsView::qt_metacast(_clname);
+}
+
+int Html5ApplicationViewerPrivate::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QGraphicsView::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Html5ApplicationViewerPrivate::quitRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+QT_END_MOC_NAMESPACE

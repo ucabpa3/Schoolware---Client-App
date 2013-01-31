@@ -15,10 +15,9 @@ signals:
 
 public slots:
     int launchApp(QString str);
-    void initiateDownload(QString fileUrl, QString Cat, QString Desc);
+    void initiateDownload(QString fileUrl,QString AppName, QString Cat, QString Desc);
     void setFrame(QWebFrame *fr);
     void JSCallback(QString callback);
-    QVariant appExists(QString AppName, QString Category);
     QString fetchFile(QString filename);
     void json();
     QVariant uninstallApp(QString AppName, QString Category);

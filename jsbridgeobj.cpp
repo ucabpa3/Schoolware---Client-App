@@ -37,25 +37,28 @@ int JSBridgeObj::launchApp(QString str){
     {
        #if defined(Q_OS_MAC)
         exit =  QProcess::execute("mono",  QStringList() << str);
-
-
        #elif defined(Q_OS_WIN32)
         exit =  QProcess::execute(str, QStringList());
         #endif
     }
     if(exit == 0){
         QString js = fetchFile(filePath);
-        QString esc_js = escapeJavascriptString(js);
-        frame->evaluateJavaScript(QString("sendTestResults('%1')").arg(esc_js));
-        QFile::remove(filePath);
+        if(js != " "){
+            QString esc_js = escapeJavascriptString(js);
+            frame->evaluateJavaScript(QString("sendTestResults('%1')").arg(esc_js));
+            QFile::remove(filePath);
+        }
+        else{
+            frame->evaluateJavaScript(QString("passMsg('Test was not completed.')"));
+        }
     }
 
     return exit;
 }
 
-void JSBridgeObj::initiateDownload(QString fileUrl, QString Cat, QString Desc){
+void JSBridgeObj::initiateDownload(QString fileUrl,QString AppName, QString Cat, QString Desc){
     DownloadManager *manager = new DownloadManager();
-    manager->downloadFile(fileUrl, Cat, Desc);
+    manager->downloadFile(fileUrl,AppName, Cat, Desc);
     connect(manager,SIGNAL(downloadCallback(QString)),SLOT(JSCallback(QString)));
 }
 
@@ -132,24 +135,6 @@ void JSBridgeObj::updateFile(QString fileName, QString data){
 
 }
 
-QVariant JSBridgeObj::appExists(QString AppName, QString Category){
-
-    QFile file("update.json");
-
-    if(file.open(QIODevice::ReadOnly)){
-        QTextStream stream(&file);
-
-        while(!stream.atEnd()){
-            QString line = stream.readLine();
-            if(line.contains(AppName) && line.contains(Category)){
-                file.close();
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
 bool JSBridgeObj::dependancyCheck(QString dep){
 
     QProcess *proc = new QProcess();
@@ -191,7 +176,7 @@ void JSBridgeObj::JSCallback(QString callback){
 
 
 void JSBridgeObj::json(){
-    QString js = fetchFile("30.01.2013.json");
+    QString js = fetchFile("31.01.2013.json");
     QString esc_js = escapeJavascriptString(js);
     frame->evaluateJavaScript(QString("sendTestResults('%1')").arg(esc_js));
 }

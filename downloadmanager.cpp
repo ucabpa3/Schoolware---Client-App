@@ -8,9 +8,10 @@ DownloadManager::DownloadManager(QObject *parent):
     connect(_manager, SIGNAL(finished(QNetworkReply*)), SLOT(downloadFinished(QNetworkReply*)));
 }
 
-void DownloadManager::downloadFile(QString file_url, QString Cat, QString Desc){
+void DownloadManager::downloadFile(QString file_url, QString appName, QString Cat, QString Desc){
     Category = Cat;
     AppDesc = Desc;
+    AppName = appName;
     QUrl url(file_url);
     _manager->get(QNetworkRequest(url));
 }
@@ -46,7 +47,7 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
 
         QDir::setCurrent(QDir::currentPath() + "/" + Category);//appfolder category
        // qDebug() << list[1];
-        QString DirName = fileName + "App";
+        QString DirName = AppName + "App";
 
         if(!QDir(DirName).exists()){
             QDir().mkdir(DirName);
@@ -66,8 +67,8 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
                 }
                 downloadCallback("finishedDownload();");
                 QDir::setCurrent(initWorkingPath);
-                buildAppHtml(fileName, completePathToApp);
-                jsonBuilder(fileName,Category);
+                buildAppHtml(AppName, completePathToApp);
+                jsonBuilder(AppName,Category);
 
             }
             else{
@@ -92,7 +93,7 @@ void DownloadManager::buildAppHtml(QString fileName, QString PathToApp){
 
             QTextStream stream (&appHtml);
             stream << "<div class=\"installed-app\" category=\""+Category+"\" description=\""+AppDesc+"\">";
-            stream << "<a href=\""+PathToApp+"\"><img src=\"img/application_icon.png\"/>"+fileName+"</a>";
+            stream << "<a href=\""+PathToApp+"\"><img src=\"img/application_icon.png\"/>"+AppName+"</a>";
             stream << "</div>" << endl;
             appHtml.close();
         }
