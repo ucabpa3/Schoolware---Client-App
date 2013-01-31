@@ -95,12 +95,17 @@ QVariant JSBridgeObj::uninstallApp(QString AppName, QString Category){
             fileTemp.open(QIODevice::WriteOnly);
             QTextStream streamTemp (&fileTemp);
             int counter = 0;
+
             while(!stream.atEnd()){
 
                 QString lineTemp = stream.readLine();
 
-                if(!lineTemp.contains(AppName) && !lineTemp.contains(Category)){
+                if(!lineTemp.contains(AppName) || !lineTemp.contains(Category)){
                     streamTemp << lineTemp << endl;
+
+                }
+                else{
+                    lineTemp = stream.readLine();
                 }
                 counter++;
 

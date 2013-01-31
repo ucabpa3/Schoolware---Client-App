@@ -51,7 +51,8 @@ bindEvents();
                // linker.launchJar("/Users/costas/Documents/Coureswork.jar");
             }
             //linker.launchApp("Biology_1.jar");
-            setTimeout('retrieveCategories();',500);
+            //setTimeout('',500);
+            retrieveCategories();
             //linker.json();
         });
 

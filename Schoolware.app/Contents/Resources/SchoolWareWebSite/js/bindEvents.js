@@ -158,6 +158,9 @@ function bindEvents(){
 
         loadingText.text("Downloading...");
         loading.animate({bottom: "+=70"},200);
+        $("#inst-cat ul li #all").addClass("selected");
+       // $("#inst-cat ul li.selected").removeClass("selected");
+
     });
 
     $(".installed-app a").live("click",function(event){
@@ -225,17 +228,18 @@ function bindEvents(){
                 else if($(this).attr('category') == category){
                     count ++;
                 }
-                if (count == 0 ){
 
-                    $("#inst-cat  #"+category).remove();
-                    var updateData = "";
-                    if($("#inst-cat ul li").length != 1){
-                        updateData = $("#inst-cat ul").html();
-                    }
-
-                    linker.updateFile("cathtml.Html",updateData);
-                }
             });
+            if (count == 0 ){
+
+                $("#inst-cat  #"+category).remove();
+                var updateData = "";
+                if($("#inst-cat ul li").length != 1){
+                    updateData = $("#inst-cat ul").html();
+                }
+
+                linker.updateFile("cathtml.Html",updateData);
+            }
         }
         else $().toastmessage('showErrorToast', "Something went wrong!");
     });

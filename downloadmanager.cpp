@@ -165,12 +165,12 @@ void DownloadManager::jsonBuilder(QString appname, QString category){
                     QString lineTemp = stream.readLine();
 
                     if(lineTemp != "]"){
-                        line.append(lineTemp);
+                        line.append(lineTemp + "\n");
 
                     }
                     else {
 
-                        line.append("\n,{\"Appname\" : \""+appname+"\",\"Category\":\""+category+"\"}");
+                        line.append(",\n{\"Appname\" : \""+appname+"\",\"Category\":\""+category+"\"}");
                         break;
                     }
                 }
