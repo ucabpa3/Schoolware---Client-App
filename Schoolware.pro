@@ -6,12 +6,15 @@ DEPLOYMENTFOLDERS = folder_01
 # Define TOUCH_OPTIMIZED_NAVIGATION for touch optimization and flicking
 DEFINES += TOUCH_OPTIMIZED_NAVIGATION
 QT += network
+QT += webkit
 
 # If your application uses the Qt Mobility libraries, uncomment the following
 # lines and add the respective components to the MOBILITY variable.
 # CONFIG += mobility
 # MOBILITY +=
-QT       += webkit
+CONFIG +=static
+
+#mac: CONFIG += x86 ppc
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     jsbridgeobj.cpp \

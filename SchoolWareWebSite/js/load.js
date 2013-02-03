@@ -36,6 +36,7 @@ bindEvents();
         else appPane.html('<h1 id="start-br">Start browsing applications.</h1>');
 
         catHtml = linker.fetchFile("cathtml.html");
+
         if(catHtml != " "){
             $("#inst-cat ul").append(catHtml);
         }
