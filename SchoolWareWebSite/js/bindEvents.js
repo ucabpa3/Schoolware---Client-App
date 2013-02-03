@@ -235,7 +235,9 @@ function bindEvents(){
                 $("#inst-cat  #"+category).remove();
                 var updateData = "";
                 if($("#inst-cat ul li").length != 1){
-                    updateData = $("#inst-cat ul").html();
+                    var obj = $("#inst-cat ul li:not(:first)");
+                    alert(obj.wrap("<div></div>").parent.html());
+                    updateData = obj.wrap("<div></div>").parent.html();
                 }
 
                 linker.updateFile("cathtml.Html",updateData);
