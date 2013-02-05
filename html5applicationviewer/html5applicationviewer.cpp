@@ -315,6 +315,7 @@ WebTouchPhysicsInterface::~WebTouchPhysicsInterface()
         s_instance = 0;
 }
 
+
 WebTouchPhysicsInterface* WebTouchPhysicsInterface::getSingleton()
 {
     if (!s_instance)

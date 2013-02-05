@@ -28,6 +28,7 @@ int JSBridgeObj::launchApp(QString str){
     QString filePath = QDir::currentPath() + "/" + JSONdir + "/" + jsonName;
     if (str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4 )
     {
+        //qDebug() << "java", QStringList() << "-jar" << str << filePath;
         exit =  QProcess::execute( "java", QStringList() << "-jar" << str << filePath);
     }
    // else if(str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4){
@@ -45,7 +46,8 @@ int JSBridgeObj::launchApp(QString str){
         QString js = fetchFile(filePath);
         if(js != " "){
             QString esc_js = escapeJavascriptString(js);
-            frame->evaluateJavaScript(QString("sendTestResults('%1')").arg(esc_js));
+            QString pass = QString("sendTestResults(%1);").arg(QString("\""+esc_js+"\""));
+            frame->evaluateJavaScript(pass);
             QFile::remove(filePath);
         }
         else{
@@ -244,3 +246,4 @@ QString JSBridgeObj::escapeJavascriptString(QString str)
     out += str.mid(lastPos);
     return out;
 }
+

@@ -50,6 +50,7 @@ bindEvents();
             }
 
             retrieveCategories();
+           // window.location = "http://www.google.com/"
         });
 
 

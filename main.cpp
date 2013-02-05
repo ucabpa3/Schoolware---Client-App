@@ -21,7 +21,7 @@ void SetupGlobalWebSettings(){
         settings->setAttribute(QWebSettings::PrivateBrowsingEnabled,                false);  // default : false
 
         settings->setAttribute(QWebSettings::JavascriptEnabled,                 true);  // default : true
-        settings->setAttribute(QWebSettings::JavascriptCanOpenWindows,              false);  // default : false
+        settings->setAttribute(QWebSettings::JavascriptCanOpenWindows,              true);  // default : false
         settings->setAttribute(QWebSettings::JavascriptCanAccessClipboard,          false);  // default : false
         settings->setAttribute(QWebSettings::JavaEnabled,                           false);  // default : false, currently Java applets are not supported.
 
@@ -50,9 +50,6 @@ void SetupGlobalWebSettings(){
         //settings->setLocalStoragePath(QString("/Users/costas/Documents"));
 }
 
-
-
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -63,6 +60,7 @@ int main(int argc, char *argv[])
     viewer.showMaximized();
     viewer.setMinimumWidth(1120);
     viewer.loadFile(QLatin1String("SchoolWareWebSite/index.html"));
+    //viewer.loadUrl(QUrl("http://localhost:8080/jscoverage.html"));
 
     QWebPage *page = viewer.webView()->page();
     QWebFrame *frame = page->mainFrame();

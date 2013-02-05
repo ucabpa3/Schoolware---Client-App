@@ -74,11 +74,12 @@ function sendTestResults(str){
             $.ajax({
                     type: "POST",
                     url: "http://schoolware.cs.ucl.ac.uk:9999/aad-ws/api/result/submit",
-                       data : {json:json},
-                       //  data: str,
+                      // data : {json:json},
+                         data: str,
                        contentType:'application/json'
                 }).done(function(msg ) {
-                    $().toastmessage('showErrorToast',"Fine");
+                    //$().toastmessage('showErrorToast',"Fine");
+                    $().toastmessage('showSuccessToast', "Test Resutls sent.");
                     loading.animate({bottom: "-=70"},200);
                   })
             .error(function(jq, textstatus, errorThrown){
