@@ -430,10 +430,13 @@ background: transparent;
     text-align:center;
     width:150px;
 }
+
 .browse-app{
     margin:0 20px 30px 0;
 }
 .installed-app img, .browse-app img{
+    width:150px;
+    height:140px;
     margin-bottom:5px;
 }
 

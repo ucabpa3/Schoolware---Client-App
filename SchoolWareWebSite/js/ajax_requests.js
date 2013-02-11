@@ -21,7 +21,6 @@ function retrieveCategories(){
         )
         .error(function(jq, textstatus, errorThrown) {
             loading.animate({bottom: "-=70"},200);
-                //alert("Error: "+errorThrown);
             $().toastmessage('showErrorToast', "Error: "+errorThrown);
         });
 
@@ -40,8 +39,7 @@ function retrieveAppsByCat(category){
             $.getJSON("http://schoolware.cs.ucl.ac.uk:9999/aad-ws/api/applications/"+category, function(data) {
               $.each(data, function(i,apps) {
                   $.each(apps,function(prop,value){
-                     // alert(value.categoryName);
-                      appPane.append('<div class="browse-app" category="'+value.categoryName+'" description=\"'+value.description+'\"><a href="'+value.url+'" onfocus="blur();"><img src="img/application_icon.png"/>'+value.name+'</a></div>');
+                      appPane.append('<div class="browse-app" appID="'+value.id+'" category="'+value.categoryName+'" description=\"'+value.description+'\"><a href="'+value.url+'" onfocus="blur();"><img src="'+value.iconUrl+'"/>'+value.name+'</a></div>');
                      $(".browse-app").fadeIn("fast");
                   });
 

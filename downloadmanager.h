@@ -32,6 +32,7 @@ private slots:
     void buildAppHtml(QString fileName,  QString PathToApp);
     void buildCatHtml();
     void jsonBuilder(QString appname, QString category);
+    void downloadImg(QString imgUrl);
 
 };
 
