@@ -33,9 +33,9 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
 
         if(AppDesc == " "){
 
-            QStringList list = temp.split(".");
-            QString filename = AppName+"."+list[1];
-            qDebug()<<QDir::currentPath()+"/AppFolder/"+Category+"/"+AppName+"/"+filename;
+           // QStringList list = temp.split(".");
+            QString filename = AppName+".png";
+
             QFile file(QDir::currentPath()+"/AppFolder/"+Category+"/"+AppName+"/"+filename);
             if (file.open(QIODevice::WriteOnly))
             {
@@ -78,7 +78,7 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
                 QDir::setCurrent(QDir::currentPath() + "/" + DirName);
                 downloadCallback("finishedDownload();");
                 QDir::setCurrent(initWorkingPath);
-                buildAppHtml(AppName, completePathToApp);
+                buildAppHtml(temp, QDir::currentPath() + "/AppFolder/"+ Category + "/" + DirName + "/");
                 jsonBuilder(AppName,Category);
 
             }
@@ -98,14 +98,15 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
 
 void DownloadManager::buildAppHtml(QString fileName, QString PathToApp){
 
-    //QStringList list = fileName.split(".");
     QFile appHtml("appList.html");
     if(!appHtml.exists()){
         if (appHtml.open(QIODevice::WriteOnly)){
 
             QTextStream stream (&appHtml);
+            qDebug() << PathToApp + fileName;
+            qDebug() << PathToApp + AppName;
             stream << "<div class=\"installed-app\" category=\""+Category+"\" description=\""+AppDesc+"\">";
-            stream << "<a href=\""+PathToApp+"\"><img src=\"img/application_icon.png\"/>"+AppName+"</a>";
+            stream << "<a href=\""+PathToApp+fileName+"\"><img src=\""+PathToApp+AppName+".png\"/>"+AppName+"</a>";
             stream << "</div>" << endl;
             appHtml.close();
         }
@@ -115,8 +116,10 @@ void DownloadManager::buildAppHtml(QString fileName, QString PathToApp){
         if(appHtml.open(QIODevice::Append)){
 
             QTextStream stream (&appHtml);
+            qDebug() << PathToApp + fileName;
+            qDebug() << PathToApp + AppName+".png";
             stream << "<div class=\"installed-app\" category=\""+Category+"\" description=\""+AppDesc+"\">"<<endl;
-            stream << "<a href=\""+PathToApp+"\" onfocus=\"blur();\"><img src=\"img/application_icon.png\"/>"+fileName+"</a>";
+            stream << "<a href=\""+PathToApp+fileName+"\"><img src=\""+PathToApp+AppName+".png\"/>"+AppName+"</a>";
             stream << "</div>" << endl;
             appHtml.close();
         }
