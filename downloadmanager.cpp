@@ -28,10 +28,26 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
     else
     {
         QString path = url.path();
-        QString fileName = QFileInfo(path).fileName();
-        if (fileName.isEmpty()) fileName = "download";
+        QString temp = QFileInfo(path).fileName();
+        if (temp.isEmpty()) temp = "download";
 
-        QStringList list = fileName.split(".");
+        if(AppDesc == " "){
+
+            QStringList list = temp.split(".");
+            QString filename = AppName+"."+list[1];
+            qDebug()<<QDir::currentPath()+"/AppFolder/"+Category+"/"+AppName+"/"+filename;
+            QFile file(QDir::currentPath()+"/AppFolder/"+Category+"/"+AppName+"/"+filename);
+            if (file.open(QIODevice::WriteOnly))
+            {
+                file.write(reply->readAll());
+                file.close();
+            }
+            else qDebug() << file.errorString();
+        }
+
+        else{
+
+        //QStringList list = fileName.split(".");
 
         QString MainAppDir = "AppFolder";
         QString initWorkingPath = QDir::currentPath() ;
@@ -46,14 +62,13 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
         }
 
         QDir::setCurrent(QDir::currentPath() + "/" + Category);//appfolder category
-       // qDebug() << list[1];
-        QString DirName = AppName + "App";
+        QString DirName = AppName;
 
         if(!QDir(DirName).exists()){
             QDir().mkdir(DirName);
 
 
-        QString completePathToApp = QDir::currentPath() + "/" + DirName +"/"+ fileName;
+        QString completePathToApp = QDir::currentPath() + "/" + DirName +"/"+ temp;
         QFile file(completePathToApp);
         if(!file.exists()){
             if (file.open(QIODevice::WriteOnly))
@@ -61,10 +76,6 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
                 file.write(reply->readAll());
                 file.close();
                 QDir::setCurrent(QDir::currentPath() + "/" + DirName);
-                if(list[1] == "zip"){
-                    QString cmd = QString("unzip ").append(fileName);
-                    QProcess::execute(cmd);
-                }
                 downloadCallback("finishedDownload();");
                 QDir::setCurrent(initWorkingPath);
                 buildAppHtml(AppName, completePathToApp);
@@ -80,6 +91,7 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
         else{
             QDir::setCurrent(initWorkingPath);
             downloadCallback("finishedDownload('Application already exists.');");
+        }
         }
     }
 }

@@ -28,12 +28,8 @@ int JSBridgeObj::launchApp(QString str){
     QString filePath = QDir::currentPath() + "/" + JSONdir + "/" + jsonName;
     if (str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4 )
     {
-        //qDebug() << "java", QStringList() << "-jar" << str << filePath;
         exit =  QProcess::execute( "java", QStringList() << "-jar" << str << filePath);
     }
-   // else if(str.contains(".jar") && str.lastIndexOf(".jar") == str.size() - 4){
-   //     exit =  QProcess::execute( "java", QStringList() << "-jar" << str );
-    //}
     else if (str.contains(".exe") && str.lastIndexOf(".exe") == str.size() - 4)
     {
        #if defined(Q_OS_MAC)

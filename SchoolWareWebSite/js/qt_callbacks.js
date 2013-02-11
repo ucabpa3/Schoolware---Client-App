@@ -5,7 +5,7 @@ function finishedDownload(msg){
             $().toastmessage('showErrorToast', msg);
         }
         else{
-
+            linker.initiateDownload(imgUrl, app_name, cat, " ");
             $("#inst-cat ul li:not(:first-child)").remove()
             $("#inst-cat ul").append(linker.fetchFile("cathtml.html"));
             $(".install a").fadeOut("fast",function(){

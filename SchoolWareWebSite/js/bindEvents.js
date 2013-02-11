@@ -1,3 +1,11 @@
+var classArr;
+var cat;
+var url;
+var imgUrl;
+var desc;
+var app_name;
+
+
 function bindEvents(){
     /*============================================
                 Sidebar click events
@@ -125,7 +133,7 @@ function bindEvents(){
         $("#full-app-desc div.browse-app img").unwrap();
         var aname = $("#full-app-desc div.browse-app").text();
         var acat = $(this).parent().attr("category");
-       // appExists(aname, acat);
+
         if(appExists(aname, acat)){
                  $("#full-app-desc").append("<div id=\"download\" class=\"installed\"><a>Installed</a></div>");
         }
@@ -148,11 +156,12 @@ function bindEvents(){
 
         event.preventDefault();
 
-        var classArr = $("#full-app-desc div.browse-app").attr('class');
-        var cat = $("#full-app-desc div.browse-app").attr('category');
-        var url = $(this).attr('href');
-        var desc = $("#app-desc").text();
-        var app_name = $("#full-app-desc div.browse-app").text();
+        classArr = $("#full-app-desc div.browse-app").attr('class');
+        cat = $("#full-app-desc div.browse-app").attr('category');
+        url = $(this).attr('href');
+        imgUrl = $("#full-app-desc div.browse-app img").attr("src");
+        desc = $("#app-desc").text();
+        app_name = $("#full-app-desc div.browse-app").text();
 
         linker.initiateDownload(url, app_name, cat, desc);
 
