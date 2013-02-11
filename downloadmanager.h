@@ -15,7 +15,7 @@ public:
     explicit DownloadManager(QObject *parent = 0);
 
 public slots:
-    void downloadFile(QString file_url,QString appName, QString Cat, QString Desc);
+    void downloadFile(QString file_url,QString appName,QString appID, QString Cat, QString Desc);
 
 signals:
     void downloadCallback(QString callback);
@@ -26,6 +26,7 @@ private:
     QString Category;
     QString AppDesc;
     QString AppName;
+    QString AppID;
 
 private slots:
     void downloadFinished(QNetworkReply *reply);

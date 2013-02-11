@@ -4,6 +4,7 @@ var url;
 var imgUrl;
 var desc;
 var app_name;
+var appID;
 
 
 function bindEvents(){
@@ -133,8 +134,9 @@ function bindEvents(){
         $("#full-app-desc div.browse-app img").unwrap();
         var aname = $("#full-app-desc div.browse-app").text();
         var acat = $(this).parent().attr("category");
+        var aid = $(this).parent().attr("appID");
 
-        if(appExists(aname, acat)){
+        if(appExists(aname, acat,aid)){
                  $("#full-app-desc").append("<div id=\"download\" class=\"installed\"><a>Installed</a></div>");
         }
         else{
@@ -162,8 +164,9 @@ function bindEvents(){
         imgUrl = $("#full-app-desc div.browse-app img").attr("src");
         desc = $("#app-desc").text();
         app_name = $("#full-app-desc div.browse-app").text();
+        appID = $("#full-app-desc div.browse-app").attr('appID');
 
-        linker.initiateDownload(url, app_name, cat, desc);
+        linker.initiateDownload(url, app_name, appID, cat, desc);
 
         loadingText.text("Downloading...");
         loading.animate({bottom: "+=70"},200);
@@ -193,7 +196,10 @@ function bindEvents(){
         });
     });
 
-    $("#launch a").live("click",function(){
+    $("#launch a").live("click",function(event){
+
+        event.preventDefault();
+
         var appPath = $(this).attr('href');
 
             var exit = linker.launchApp(appPath);
@@ -202,7 +208,9 @@ function bindEvents(){
             }
     });
 
-    $(".uninstall a").live("click",function(){
+    $(".uninstall a").live("click",function(event){
+
+        event.preventDefault();
 
         var appname = $(this).attr("href");
         var category = $(this).parent().attr("category");
@@ -265,29 +273,24 @@ function bindEvents(){
     function filterApps(selcat){
 
         if(selcat == "All"){
-            $("#app-pane div").each(function(){
-                if($(this).is(":hidden")){
-                    $(this).show("fast");
-                }
-            });
+           $("#app-pane").fadeOut(function(){
+               $('#app-pane div').fadeIn(function(){$("#app-pane").fadeIn();});
+           });
         }
         else{
-            $("#app-pane div").each(function(){
-
-             var str = $(this).attr("category");
-                if(selcat != str){
-                    $(this).hide("slow");
-                }
-                 else{
-                    $(this).show("slow");
-                }
-            });
+            $("#app-pane").fadeOut("fast",function(){
+                $('#app-pane div').fadeOut("fast",function(){
+                    $('#app-pane div[category="'+selcat+'"]').fadeIn("fast",function(){
+                        $("#app-pane").fadeIn("fast");
+                    });
+                });
+            })
          }
     }
 
     /* Check if application exists */
 
-    function appExists(appname, category){
+    function appExists(appname, category, appid){
 
         var apps = linker.fetchFile("update.json");
 
@@ -295,7 +298,7 @@ function bindEvents(){
         try{
             var obj = JSON.parse(apps);
             for (var i = 0, len = obj.length; i < len; i++) {
-                if(obj[i].Appname == appname && obj[i].Category === category){
+                if(obj[i].Appname == appname && obj[i].Category === category && obj[i].AppID === appid){
                     return true;
                 }
             }

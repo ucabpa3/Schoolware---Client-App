@@ -54,9 +54,9 @@ int JSBridgeObj::launchApp(QString str){
     return exit;
 }
 
-void JSBridgeObj::initiateDownload(QString fileUrl,QString AppName, QString Cat, QString Desc){
+void JSBridgeObj::initiateDownload(QString fileUrl,QString AppName,QString appID, QString Cat, QString Desc){
     DownloadManager *manager = new DownloadManager();
-    manager->downloadFile(fileUrl,AppName, Cat, Desc);
+    manager->downloadFile(fileUrl,AppName, appID, Cat, Desc);
     connect(manager,SIGNAL(downloadCallback(QString)),SLOT(JSCallback(QString)));
 }
 

@@ -15,7 +15,7 @@ signals:
 
 public slots:
     int launchApp(QString str);
-    void initiateDownload(QString fileUrl,QString AppName, QString Cat, QString Desc);
+    void initiateDownload(QString fileUrl,QString AppName,QString appID, QString Cat, QString Desc);
     void setFrame(QWebFrame *fr);
     void JSCallback(QString callback);
     QString fetchFile(QString filename);

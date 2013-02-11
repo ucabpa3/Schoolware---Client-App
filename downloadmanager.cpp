@@ -8,10 +8,11 @@ DownloadManager::DownloadManager(QObject *parent):
     connect(_manager, SIGNAL(finished(QNetworkReply*)), SLOT(downloadFinished(QNetworkReply*)));
 }
 
-void DownloadManager::downloadFile(QString file_url, QString appName, QString Cat, QString Desc){
+void DownloadManager::downloadFile(QString file_url, QString appName, QString appID, QString Cat, QString Desc){
     Category = Cat;
     AppDesc = Desc;
     AppName = appName;
+    AppID = appID;
     QUrl url(file_url);
     _manager->get(QNetworkRequest(url));
 }
@@ -21,7 +22,7 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
     QUrl url = reply->url();
     if (reply->error())
     {
-        qDebug() << "Download of " <<  url.toEncoded().constData()
+        uug() << "Download of " <<  url.toEncoded().constData()
                  << " failed: " << reply->errorString();
         downloadCallback("finishedDownload('Download Failed.');");
     }
@@ -103,8 +104,7 @@ void DownloadManager::buildAppHtml(QString fileName, QString PathToApp){
         if (appHtml.open(QIODevice::WriteOnly)){
 
             QTextStream stream (&appHtml);
-            qDebug() << PathToApp + fileName;
-            qDebug() << PathToApp + AppName;
+
             stream << "<div class=\"installed-app\" category=\""+Category+"\" description=\""+AppDesc+"\">";
             stream << "<a href=\""+PathToApp+fileName+"\"><img src=\""+PathToApp+AppName+".png\"/>"+AppName+"</a>";
             stream << "</div>" << endl;
@@ -164,7 +164,7 @@ void DownloadManager::jsonBuilder(QString appname, QString category){
     if(!file.exists()){
         if (file.open(QIODevice::WriteOnly)){
             QTextStream stream (&file);
-            stream << "["<<endl<<"{\"Appname\" : \""+appname+"\",\"Category\":\""+category+"\"}"<<endl<< "]";
+            stream << "["<<endl<<"{\"Appname\" : \""+appname+"\",\"AppID\" : \""+AppID+"\",\"Category\":\""+category+"\"}"<<endl<< "]";
             file.close();
         }
     }
@@ -185,7 +185,7 @@ void DownloadManager::jsonBuilder(QString appname, QString category){
                     }
                     else {
 
-                        line.append(",\n{\"Appname\" : \""+appname+"\",\"Category\":\""+category+"\"}");
+                        line.append(",\n{\"Appname\" : \""+appname+"\",\"AppID\": \""+AppID+"\" ,\"Category\":\""+category+"\"}");
                         break;
                     }
                 }
