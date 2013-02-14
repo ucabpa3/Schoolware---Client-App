@@ -22,7 +22,7 @@ void DownloadManager::downloadFinished(QNetworkReply *reply){
     QUrl url = reply->url();
     if (reply->error())
     {
-        uug() << "Download of " <<  url.toEncoded().constData()
+        qDebug() << "Download of " <<  url.toEncoded().constData()
                  << " failed: " << reply->errorString();
         downloadCallback("finishedDownload('Download Failed.');");
     }
